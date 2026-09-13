@@ -1,0 +1,5 @@
+interface:
+  display_name: "Windows Computer Use Compatibility"
+  short_description: "Route Windows native Computer Use through Sky"
+policy:
+  allow_implicit_invocation: false
