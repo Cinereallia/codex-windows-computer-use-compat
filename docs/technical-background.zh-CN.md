@@ -10,7 +10,7 @@ Skill 通过 `agents/openai.yaml` 设置为仅显式调用，不会自动接管�
 
 ## 已确认行为
 
-受影响路径会把 unified `cua_repl` 暴露成只有浏览器能力的 surface。常见症状包括 native app list 为空、`cua.getApp`/`cua.listApps` 缺失，或 unified facade 只有浏览器方法，但 Windows helper、named pipe 和 Sky package 实际存在。
+受影响路径会把 unified facade 暴露成只有浏览器能力的 surface。常见症状包括 native app list 为空、native methods 不可用，或 unified facade 只有浏览器方法，但 Windows helper、named pipe 和 Sky package 实际存在。
 
 已验证的兼容路径是 trusted legacy `mcp__node_repl__js` 加载内置 `@oai/sky` client。它已验证能够：
 
@@ -51,7 +51,7 @@ $skill-installer Install the skill from this GitHub URL:
 https://github.com/Cinereallia/codex-windows-computer-use-compat/tree/main/skills/codex-windows-computer-use-compat
 ```
 
-安装器会递归复制该目录到用户 Skill 目录。卸载时只删除已安装的 `codex-windows-computer-use-compat` 目录，不要删除 Codex cache、runtime、session 或官方 Computer Use plugin。
+安装器会递归复制该目录到用户 Skill 目录。安装后应显式调用本 Skill；如果 Codex 没有检测到它，再开启新任务或重启 Codex。卸载时只删除已安装的 `codex-windows-computer-use-compat` 目录，不要删除 Codex cache、runtime、session 或官方 Computer Use plugin。
 
 未来 Codex stable build 在 fresh task 中通过默认 Computer Use 路径完成同一个 Notepad 测试后，应停止调用本 Skill，标记仓库 Deprecated，发布最终弃用 release 并 archive。项目不实现自动版本检测或 fallback 框架。
 

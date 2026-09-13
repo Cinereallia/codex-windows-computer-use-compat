@@ -10,7 +10,7 @@ The Skill is explicit-only through `agents/openai.yaml`. It does not automatical
 
 ## Confirmed behavior
 
-The affected path exposes the unified `cua_repl` surface with browser capabilities only. Typical symptoms are an empty native app list, missing `cua.getApp`/`cua.listApps`, or a browser-only facade even though the Windows helper, named pipe, and Sky package are present.
+The affected path exposes a unified facade with browser capabilities only. Typical symptoms are an empty native app list, unavailable native methods, or a browser-only facade even though the Windows helper, named pipe, and Sky package are present.
 
 The validated compatibility path is the trusted legacy `mcp__node_repl__js` tool with the bundled `@oai/sky` client. It was verified to:
 
@@ -51,7 +51,7 @@ $skill-installer Install the skill from this GitHub URL:
 https://github.com/Cinereallia/codex-windows-computer-use-compat/tree/main/skills/codex-windows-computer-use-compat
 ```
 
-The installer copies the selected directory recursively into the user Skill location. Uninstall by removing only the installed `codex-windows-computer-use-compat` directory. Do not remove Codex caches, runtime directories, sessions, or the official Computer Use plugin.
+The installer copies the selected directory recursively into the user Skill location. After installation, invoke the Skill explicitly; if Codex does not detect it, start a new task or restart Codex. Uninstall by removing only the installed `codex-windows-computer-use-compat` directory. Do not remove Codex caches, runtime directories, sessions, or the official Computer Use plugin.
 
 When a future stable Codex build passes the same Notepad test through the default Computer Use route in a fresh task, stop invoking this Skill, mark the repository deprecated, publish a final deprecation release, and archive the repository. No automatic version detector or fallback framework is included.
 
